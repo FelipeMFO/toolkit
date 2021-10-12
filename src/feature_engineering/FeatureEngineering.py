@@ -43,7 +43,7 @@ class FeatureEngineering():
         df.index.name = 'time'
         return df
 
-    def get_shrinked_columns(self, df:pd.DataFrame) -> pd.DataFrame:
+    def get_shrinked_columns(self, df: pd.DataFrame) -> pd.DataFrame:
         """Shrink the columns of the dataframe .
 
         Args:

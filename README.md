@@ -2,7 +2,8 @@
 
 The objective of this repository is to be my tool case/arsenal for data projects
 
-TODO: Colocar aqui os comandos de inicialização de git e de envinronment
+- TODO: Colocar aqui os comandos de inicialização de git e de envinronment
+- TODO: Colocar informações do lint (flake8) https://code.visualstudio.com/docs/python/linting
 
 ## Project name
 
