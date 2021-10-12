@@ -6,3 +6,10 @@ def read_file(file_path):
     fd.close()
 
     return content
+
+# Notebook strip to import models
+# module_path = os.path.abspath(os.path.join('..','..'))
+# if module_path not in sys.path:
+#     sys.path.append(module_path)
+
+# from src.modeling.functions_autoML import auto_ML, save_aml_models
