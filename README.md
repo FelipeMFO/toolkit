@@ -2,7 +2,7 @@
 
 The objective of this repository is to be my tool case/arsenal for data projects
 
-
+TODO: Colocar aqui os comandos de inicialização de git e de envinronment
 
 ## Project name
 
