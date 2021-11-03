@@ -2,17 +2,14 @@ import pandas as pd
 import copy
 
 
-class Processing():
-    """Processes processing .
-    """
+class Processing:
+    """Processes processing ."""
 
     def __init__(self) -> None:
         pass
 
     def drop_rows_by_occurrence(
-        self, df: pd.DataFrame,
-        column: str, threshold: int,
-        type: str = "less"
+        self, df: pd.DataFrame, column: str, threshold: int, type: str = "less"
     ) -> pd.DataFrame:
         """Drop rows by occurrence of a given occurrence .
 

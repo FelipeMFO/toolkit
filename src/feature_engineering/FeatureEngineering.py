@@ -3,16 +3,15 @@ from datetime import timedelta
 import pandas as pd
 
 
-class FeatureEngineering():
-    """Class of feature engineering.
-    """
+class FeatureEngineering:
+    """Class of feature engineering."""
 
     def __init__(self) -> None:
         pass
 
     def gen_empty_df_datetime_index(
-            self, datetime_interval: tuple,
-            columns: list, minutes: int) -> pd.DataFrame:
+        self, datetime_interval: tuple, columns: list, minutes: int
+    ) -> pd.DataFrame:
         """Receives datetime_interval and generates DataFrame with
         n minutes per row as index.
 
@@ -25,22 +24,22 @@ class FeatureEngineering():
             pd.DataFrame: DataFrame with index as datetime.datetime
             and all values set to NaN.
         """
+
         def datetime_range(start, end, delta):
             current = start
             while current < end:
                 yield current
                 current += delta
+
         dts = [
-            dt.strftime('%Y-%m-%d %H:%M:%S') for dt in
-            datetime_range(
-                datetime_interval[0],
-                datetime_interval[1],
-                timedelta(minutes=minutes))
+            dt.strftime("%Y-%m-%d %H:%M:%S")
+            for dt in datetime_range(
+                datetime_interval[0], datetime_interval[1], timedelta(minutes=minutes)
+            )
         ]
-        df = pd.DataFrame(index=dts,
-                          columns=columns)
+        df = pd.DataFrame(index=dts, columns=columns)
         df.index = pd.to_datetime(df.index)
-        df.index.name = 'time'
+        df.index.name = "time"
         return df
 
     def get_shrinked_columns(self, df: pd.DataFrame) -> pd.DataFrame:
