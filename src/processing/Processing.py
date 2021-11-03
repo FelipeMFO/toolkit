@@ -1,5 +1,4 @@
 import pandas as pd
-import copy
 
 
 class Processing():
