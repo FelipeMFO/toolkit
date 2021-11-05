@@ -4,6 +4,33 @@ from IPython.display import display_html
 from itertools import chain, cycle
 
 
+def front(self, n=5):
+    return self.iloc[:, :n]
+
+
+def back(self, n=5):
+    return self.iloc[:, -n:]
+
+
+def display_columns(self, n=5):
+    return pd.concat([self.front(n), self.back(n)])
+
+
+def display_rows(self, n=5):
+    return pd.concat([self.head(n), self.tail(n)])
+
+
+def display(self, i=5, j=5):
+    return self.display_columns(i).display_rows(j)
+
+
+pd.DataFrame.front = front
+pd.DataFrame.back = back
+pd.DataFrame.display_columns = display_columns
+pd.DataFrame.display_rows = display_rows
+pd.DataFrame.display = display
+
+
 class Visualization():
     """Class with methods for visualization of DataFrames.
     """
@@ -36,7 +63,7 @@ class Visualization():
         df_ans = df_ans.transpose()
         df_ans.columns = [
             f"Percentiles of {percentile_fraction} of '{column}' column"
-            ]
+        ]
         return df_ans
 
     def display_side_by_side(self, *args, titles=cycle([''])):
@@ -49,10 +76,10 @@ class Visualization():
         """
         html_str = ''
         for df, title in zip(args, chain(titles, cycle(['</br>']))):
-            df_ = copy.copy(df.head()) if (len(df) > 20) else copy.copy(df)
+            df_ = copy.copy(df.display())
             html_str += '<th style="text-align:center"><td style="vertical-align:top">'
             html_str += f'<h2>{title}</h2>'
             html_str += df_.to_html().replace('table', 'table style="display:inline"')
             html_str += '</td></th><br>'
-            html_str += f"{len(df)} rows"
+            html_str += f"{len(df)} rows x {len(df.columns)} columns"
         display_html(html_str, raw=True)
