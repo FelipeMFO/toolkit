@@ -13,7 +13,7 @@ def back(self, n=5):
 
 
 def display_columns(self, n=5):
-    return pd.concat([self.front(n), self.back(n)])
+    return pd.concat([self.front(n), self.back(n)], axis=1)
 
 
 def display_rows(self, n=5):
