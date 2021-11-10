@@ -13,12 +13,16 @@ class DatasetLoader():
     From Pickles, queries or standard loads frequently made on notebooks.
     """
 
-    def __init__(self, folder: str):
+    def __init__(self, folder: str) -> None:
         self.folder = folder
         self.subdirectories = [x[0] for x in os.walk(folder)][1:]
         self.files = next(os.walk(folder), (None, None, []))[2]
+        self.subdirectories_path = \
+            [self.folder + subdirectory for subdirectory in self.subdirectories]
+        self.files_path = \
+            [self.folder + file for file in self.files]
         self.env = os.getenv("ENV", "dev")
-        self.google_utils = GoogleUtils()
+        # self.google_utils = GoogleUtils()
         self.processing = Processing()
 
     def get_df_from_query(self, query: str) -> pd.DataFrame:
