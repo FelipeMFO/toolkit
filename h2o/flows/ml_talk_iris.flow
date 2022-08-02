@@ -1,0 +1,69 @@
+{
+  "version": "1.0.0",
+  "cells": [
+    {
+      "type": "cs",
+      "input": ""
+    },
+    {
+      "type": "cs",
+      "input": "importFiles"
+    },
+    {
+      "type": "cs",
+      "input": "importFiles [ \"gs://hurb_transient/INTERNAL/DATA_SCIENCE/tutorials/iris_dataset.csv\" ]"
+    },
+    {
+      "type": "cs",
+      "input": "setupParse source_frames: [ \"gs://hurb_transient/INTERNAL/DATA_SCIENCE/tutorials/iris_dataset.csv\" ]"
+    },
+    {
+      "type": "cs",
+      "input": "parseFiles\n  source_frames: [\"gs://hurb_transient/INTERNAL/DATA_SCIENCE/tutorials/iris_dataset.csv\"]\n  destination_frame: \"iris_dataset1.hex\"\n  parse_type: \"CSV\"\n  separator: 44\n  number_columns: 5\n  single_quotes: false\n  column_names: [\"sepal length in cm\",\"sepal width in cm\",\"petal length in cm\",\"petal width in cm\",\"target\"]\n  column_types: [\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Enum\"]\n  delete_on_done: false\n  check_header: 1\n  chunk_size: 4194304"
+    },
+    {
+      "type": "cs",
+      "input": "getFrameSummary \"iris_dataset1.hex\""
+    },
+    {
+      "type": "cs",
+      "input": "getFrameData \"iris_dataset1.hex\""
+    },
+    {
+      "type": "cs",
+      "input": "assist splitFrame, \"iris_dataset1.hex\""
+    },
+    {
+      "type": "cs",
+      "input": "splitFrame \"iris_dataset1.hex\", [0.75], [\"iris_t.750\",\"iris_t.250\"], 989738"
+    },
+    {
+      "type": "cs",
+      "input": "assist runAutoML, training_frame: \"iris_dataset1.hex\""
+    },
+    {
+      "type": "cs",
+      "input": "runAutoML {\"build_control\":{\"project_name\":\"iris_automl\",\"nfolds\":5,\"balance_classes\":false,\"stopping_criteria\":{\"seed\":-1,\"max_models\":10,\"max_runtime_secs\":0,\"max_runtime_secs_per_model\":0,\"stopping_rounds\":3,\"stopping_metric\":\"AUTO\",\"stopping_tolerance\":-1},\"keep_cross_validation_predictions\":true,\"keep_cross_validation_models\":true,\"keep_cross_validation_fold_assignment\":false},\"input_spec\":{\"training_frame\":\"iris_t.750\",\"response_column\":\"target\",\"leaderboard_frame\":\"iris_t.250\",\"ignored_columns\":[\"target\"],\"sort_metric\":\"AUTO\"},\"build_models\":{\"exclude_algos\":[],\"exploitation_ratio\":0,\"monotone_constraints\":[]}}, 'exec'"
+    },
+    {
+      "type": "cs",
+      "input": "getLeaderboard \"iris_automl@@target\""
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"DRF_1_AutoML_20201129_133017\""
+    },
+    {
+      "type": "cs",
+      "input": "predict model: \"DRF_1_AutoML_20201129_133017\""
+    },
+    {
+      "type": "cs",
+      "input": "predict model: \"DRF_1_AutoML_20201129_133017\", frame: \"iris_t.250\", predictions_frame: \"prediction-DRF-iris\""
+    },
+    {
+      "type": "cs",
+      "input": ""
+    }
+  ]
+}
