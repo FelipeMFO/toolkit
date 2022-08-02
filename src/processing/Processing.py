@@ -166,3 +166,124 @@ class Processing():
         }
 
         return ans
+
+
+
+##-------##
+
+import numpy as np
+import copy
+
+
+class Processing():
+    """Processing class for processing data.
+    """
+
+    def get_objects(self, astro_obj: object) -> dict:
+        """Get the objects from the given astropy object .
+
+        Args:
+            astro_obj (object): astrioy object to be read.
+
+        Returns:
+            dict: dictionary with all fields as a python dict.
+        """
+        ans = {
+            "event_num":  astro_obj.field("FRAME"),
+            "mult":  astro_obj.field("MULTIPLICITY"),
+            "mult_i":  astro_obj.field("MULT"),
+            "time":  astro_obj.field("TIME"),
+            "pixel":  astro_obj.field("PIXEL"),
+            "x":  astro_obj.field("X"),
+            "y":  astro_obj.field("Y"),
+            "energy":  astro_obj.field("ENERGY"),
+            "event_type":  astro_obj.field("TYPE")
+        }
+        return ans
+
+    def get_energy_dict(self, fits_dict: dict,
+                        only_mult_1: bool = True) -> dict:
+        """Create a dictionary containing the tabdata ds for the FITS file
+        as value and element abbreviation as key.
+
+        Args:
+            fits_dict (dict): Receives the entire files dict loaded from
+            DataLoader load_fits method.
+
+        Returns:
+            dict: Dictionary with enegies obtained by values with
+            multiplicity 1
+        """
+        ans = {}
+        for key in fits_dict.keys():
+            if only_mult_1:
+                mult_filter = self.get_objects(
+                    fits_dict[key]['tabdata'])["mult"] == 1
+                data_temp = self.get_objects(fits_dict[key]['tabdata'])[
+                    "energy"][mult_filter]
+            ans[key[0:2]] = data_temp
+        return ans
+
+    def get_datasets_extra_dim(self, datasets: dict) -> dict:
+        """Add one extra dimension on every value of dict datasets.
+
+        Args:
+            datsets (dict): dict with keys as elements and values
+            as np arrays
+
+        Returns:
+            dict: return dict as before but with its values with
+            one more extra dimension
+        """
+        ans = {}
+        for key in datasets:
+            ans[key] = datasets[key].reshape(*datasets[key].shape, 1)
+        return ans
+
+    def get_datasets_onehot(self, datasets: dict,
+                            num_elements: int) -> np.ndarray:
+        """Receive dataset with values and return one hot
+        encoded.
+
+        Args:
+            datasets (dict): dictionary with elemetns energies' values.
+
+        Returns:
+            np.ndarray: datasets with one hot encoding.
+        """
+        ans = []
+
+        for dataset_i, key in enumerate(datasets):
+            dataset_coded = copy.deepcopy(datasets[key])
+            shape = dataset_coded.shape
+            for element_i in range(num_elements):
+                if dataset_i == element_i:
+                    dataset_coded = np.concatenate(
+                        (dataset_coded, np.ones(shape)), axis=2)
+                else:
+                    dataset_coded = np.concatenate(
+                        (dataset_coded, np.zeros(shape)), axis=2)
+            ans.append(dataset_coded)
+
+        return np.concatenate(ans, axis=0)
+
+    def get_spectrum_from_each_element(self, datasets: np.ndarray) -> None:
+        """Receives a numpy array with spectrums labeled with
+        one hot encoder and return a list with one spectrum
+        of each element. Used on plots.
+
+        Args:
+            datasets (np.ndarray): dataset with shape (n, spec, channels),
+            while n is the size of the batch, spec is the size of spectrum
+            (2000) and channels is 1 + the number of elements.
+        """
+        n_elements = datasets.shape[-1]-1
+        ans = [[] for _ in range(n_elements)]
+        for spec in datasets:
+            position = np.where(spec[0][1:] == 1)[0][0]
+            if [] in ans:
+                if ans[position] == []:
+                    ans[position] = spec[:, 0]
+            else:
+                break
+        return ans

@@ -83,3 +83,23 @@ class Visualization():
             html_str += '</td></th><br>'
             html_str += f"{len(df)} rows x {len(df.columns)} columns"
         display_html(html_str, raw=True)
+
+    def display_vertically(self, *args, titles=cycle([''])):
+        """Prints the given DataFrames showing their number of rows.
+        Receive arguments as a dictionary.
+
+        Args:
+            titles ([type], optional): titles of the DataFrames provided.
+            Defaults to cycle(['']).
+        """
+        html_str = ''
+        for df, title in zip(args, chain(titles, cycle(['</br>']))):
+            df_ = copy.copy(df.display())
+            html_str += \
+                '<th style="text-align:center"><td style="vertical-align:top">'
+            html_str += f'<h3>{title}</h3>'
+            html_str += \
+                df_.to_html().replace('table', 'table style="display:inline"')
+            html_str += '</td></th><br>'
+            html_str += f"{len(df)} rows x {len(df.columns)} columns"
+        display_html(html_str, raw=True)

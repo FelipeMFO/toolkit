@@ -24,6 +24,9 @@ Follow the guidelines described at the Repository's Wiki to setup local environm
 ```bash
 $ sudo docker build --tag=template-project:1.0 .
 ```
+### Instructions on setting module director path 
+
+colocar aqui as instruções do Coda
 
 ### Run the container
 
