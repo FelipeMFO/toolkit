@@ -10,6 +10,18 @@ venv.bak/
 .env_variables
 .toolkit
 
+# structure stuff
+data/
+documents/
+models/
+secrets.json
+passwords.json
+*.csv
+*.zip
+drafts/
+.vscode/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -135,15 +147,3 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# structure stuff
-data/
-docs/
-documentation/
-output/
-models/
-secrets.json
-passwords.json
-*.csv
-*.zip
-drafts/
-.vscode/
