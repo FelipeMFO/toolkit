@@ -2,7 +2,7 @@ import os
 from .processing.Processing import Processing
 from .utils import read_file
 import pandas as pd
-from astropy.io import fits
+# from astropy.io import fits
 import pickle
 
 os.chdir(os.path.dirname(__file__))

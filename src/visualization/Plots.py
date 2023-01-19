@@ -1,10 +1,10 @@
 from ..metrics.Evaluations import Evaluations
 from ..modeling.Modeling import Modeling
-from yellowbrick.cluster import SilhouetteVisualizer
-from yellowbrick.cluster import KElbowVisualizer
-from yellowbrick.cluster import InterclusterDistance
+# from yellowbrick.cluster import SilhouetteVisualizer
+# from yellowbrick.cluster import KElbowVisualizer
+# from yellowbrick.cluster import InterclusterDistance
 from sklearn.cluster import KMeans
-from src.pre_processing.Processing import Processing
+from src.processing.Processing import Processing
 import matplotlib.gridspec as gridspec
 import numpy as np
 import matplotlib

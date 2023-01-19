@@ -1,13 +1,13 @@
 import pandas as pd
 import numpy as np
-from sklearn.metrics import mean_squared_error
+# from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-from yellowbrick.cluster import intercluster_distance
-from yellowbrick.cluster import KElbowVisualizer
+# from yellowbrick.cluster import intercluster_distance
+# from yellowbrick.cluster import KElbowVisualizer
 
-from sklearn.cluster import KMeans
-from sklearn.metrics import silhouette_samples, silhouette_score
+# from sklearn.cluster import KMeans
+# from sklearn.metrics import silhouette_samples, silhouette_score
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 

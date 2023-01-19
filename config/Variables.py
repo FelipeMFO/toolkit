@@ -1,6 +1,6 @@
 import json
 
-VARS_PATH_NOTEBOOK = '../../config/variables.json'
+VARS_PATH_NOTEBOOK = '../config/variables.json'
 VARS_PATH_SCRIPT = 'config/variables_for_script.json'
 VARS_PATH = {
     "notebook": VARS_PATH_NOTEBOOK,

@@ -6,8 +6,8 @@ import pandas as pd
 import os
 import numpy as np
 import h2o
-from h2o.estimators import H2OKMeansEstimator
-from h2o import H2OAutoML
+# from h2o.estimators import H2OKMeansEstimator
+# from h2o import H2OAutoML
 
 
 class Modeling():
