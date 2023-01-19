@@ -34,7 +34,8 @@ class FeatureEngineering:
         dts = [
             dt.strftime("%Y-%m-%d %H:%M:%S")
             for dt in datetime_range(
-                datetime_interval[0], datetime_interval[1], timedelta(minutes=minutes)
+                datetime_interval[0], datetime_interval[1],
+                timedelta(minutes=minutes)
             )
         ]
         df = pd.DataFrame(index=dts, columns=columns)

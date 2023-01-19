@@ -3,17 +3,13 @@ import numpy as np
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-from os import RTLD_DEEPBIND
 from yellowbrick.cluster import intercluster_distance
 from yellowbrick.cluster import KElbowVisualizer
-from yellowbrick.cluster import SilhouetteVisualizer
 
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_samples, silhouette_score
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
-import numpy as np
-import pandas as pd
 
 
 class Evaluations():
@@ -36,7 +32,6 @@ class Evaluations():
         """Return a print comparing RMSE and MAPE through 2 pd Series."""
         print(f'MAPE: {self.mape(df[kpi_a].values, df[kpi_b].values)}')
         print(f'RMSE: {self.rmse(df[kpi_a].values, df[kpi_b].values)}')
-
 
     def sorting_by_amount(self, y_pred: np.ndarray) -> np.ndarray:
         """Sorts the labels, 0 will be the bucket with most SKUs,
@@ -175,7 +170,7 @@ class Evaluations():
             ("Silhouette analysis for KMeans clustering \
 on sample data with n_clusters = %d" % n_clusters),
             fontsize=14, fontweight='bold'
-            )
+        )
 
     plt.show()
 

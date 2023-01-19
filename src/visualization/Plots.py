@@ -1,5 +1,13 @@
-
-  
+from ..metrics.Evaluations import Evaluations
+from ..modeling.Modeling import Modeling
+from yellowbrick.cluster import SilhouetteVisualizer
+from yellowbrick.cluster import KElbowVisualizer
+from yellowbrick.cluster import InterclusterDistance
+from sklearn.cluster import KMeans
+from src.pre_processing.Processing import Processing
+import matplotlib.gridspec as gridspec
+import numpy as np
+import matplotlib
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -82,7 +90,8 @@ class Plots():
         export_pdf: bool = False,
         **kwargs
     ) -> None:
-        """Plots histplots of a DataFrame filtering using thresholds established
+        """Plots histplots of a DataFrame filtering using
+        thresholds established
         on a provided dict.
         Args:
             df (pd.DataFrame): DataFrame with data to be plotted.
@@ -127,17 +136,7 @@ class Plots():
             plt.savefig(f'{kwargs["pdf_title"]}.pdf')
 
 
-#-------
-
-import matplotlib.pyplot as plt
-import matplotlib
-import seaborn as sns
-import pandas as pd
-import numpy as np
-import math
-
-
-class Plots():
+class PlotsCount():
     """Module that will be used for rendering the plots.
     """
 
@@ -422,7 +421,8 @@ class Plots():
         export_pdf: bool = False,
         **kwargs
     ) -> None:
-        """Plots histplots of a DataFrame filtering using thresholds established
+        """Plots histplots of a DataFrame filtering using thresholds
+        established
         on a provided dict.
         Args:
             df (pd.DataFrame): DataFrame with data to be plotted.
@@ -466,15 +466,10 @@ class Plots():
         if export_pdf:
             plt.savefig(f'{kwargs["pdf_title"]}.pdf')
 
-### MAB
-
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
-
-from src.pre_processing.Processing import Processing
+# MAB
 
 
-class Plots():
+class PlotsMAB():
     """[summary]
     """
 
@@ -545,10 +540,11 @@ class Plots():
 
         # Printing 3 algs on 1st row
         for i, alg in enumerate(ALGS):
-            results[alg] = self.processing.get_simulations(ctrs, 
-                                                           number_of_pulls,
-                                                           number_of_simulation,
-                                                           alg)
+            results[alg] = \
+                self.processing.get_simulations(ctrs,
+                                                number_of_pulls,
+                                                number_of_simulation,
+                                                alg)
             ax = fig.add_subplot(gs[0, i])
 
             ax.set_title(f'Arms evolution {ALGS[alg]}.')
@@ -573,22 +569,8 @@ class Plots():
         ax_big.legend()
         ax_big.grid(True)
 
-##### K-Means Clustering
 
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
-
-from sklearn.cluster import KMeans
-from yellowbrick.cluster import InterclusterDistance
-from yellowbrick.cluster import KElbowVisualizer
-from yellowbrick.cluster import SilhouetteVisualizer
-
-from ..modeling.Modeling import Modeling
-from ..metrics.Evaluations import Evaluations
-
-
-class Plots():
+class PlotsKMeans():
     """Class responsible for plotting the figures of the project.
     """
 
@@ -707,7 +689,7 @@ class Plots():
             col_title[str(k)] = self.evaluations.get_clusters_and_amount(
                 ans["data_frame"],
                 ans["clusters"]
-                )
+            )
 
         fig.text(0.15, 0.93, f"""Distribution for k=6:
 Abs values:{col_title['6'][0]}

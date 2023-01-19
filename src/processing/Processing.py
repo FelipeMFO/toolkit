@@ -32,7 +32,8 @@ class Processing:
         return df_ans
 
     def save_pickles(self, dfs_dict: dict) -> None:
-        """Save into pickles DataFrames from dicts loaded from sheets of xlsx format.
+        """Save into pickles DataFrames from dicts loaded from sheets of xlsx
+        format.
 
         Args:
             dfs_dict (dict): DataFrame dictionary that will provide the names
@@ -163,18 +164,6 @@ class Processing:
         }
 
         return ans
-
-
-
-##-------##
-
-import numpy as np
-import copy
-
-
-class Processing():
-    """Processing class for processing data.
-    """
 
     def get_objects(self, astro_obj: object) -> dict:
         """Get the objects from the given astropy object .

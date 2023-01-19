@@ -1,3 +1,4 @@
+import numpy as np
 import os
 
 
@@ -22,26 +23,6 @@ def read_files(folder):
 #     sys.path.append(module_path)
 
 # from src.modeling.functions_autoML import auto_ML
-
-import os
-import numpy as np
-
-
-def read_file(file_path):
-    """Read file content on file_path."""
-    fd = open(file_path, 'r')
-    content = fd.read()
-    fd.close()
-
-    return content
-
-
-def read_files(folder):
-    """List all files from selected folder."""
-    filenames = next(
-        os.walk(folder),
-        (None, None, []))[2]
-    return filenames
 
 
 def apply_function_on_ndarray(array: np.ndarray, function: object):

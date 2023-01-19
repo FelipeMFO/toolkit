@@ -77,9 +77,11 @@ class Visualization():
         html_str = ''
         for df, title in zip(args, chain(titles, cycle(['</br>']))):
             df_ = copy.copy(df.display())
-            html_str += '<th style="text-align:center"><td style="vertical-align:top">'
+            html_str += \
+                '<th style="text-align:center"><td style="vertical-align:top">'
             html_str += f'<h2>{title}</h2>'
-            html_str += df_.to_html().replace('table', 'table style="display:inline"')
+            html_str += \
+                df_.to_html().replace('table', 'table style="display:inline"')
             html_str += '</td></th><br>'
             html_str += f"{len(df)} rows x {len(df.columns)} columns"
         display_html(html_str, raw=True)

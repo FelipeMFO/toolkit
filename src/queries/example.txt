@@ -6,7 +6,7 @@ WITH sub_query AS(
     p.productSKU AS sku,
     DW.VERIFY_REGION(geoNetwork.region) AS region,
     REGEXP_EXTRACT(DW.DECODE_URI_COMPONENT(DW.CUSTOM_DIMENSION_BY_INDEX(50,p.customDimensions)), r'\/(http.*)$') AS img_thumbnail
-  FROM `bi-data-science.50317505.ga_sessions_*`,
+  FROM `table`,
     UNNEST(hits) AS h,
     UNNEST(h.product) AS p
   WHERE
