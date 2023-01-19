@@ -79,7 +79,10 @@ class Evaluations():
         boobles. WARNING: Those numbers and sizes are representative on a
         new multidimensional scaling 2 dimensional space, not on the principal
         components received.
-        For more information: https://www.scikit-yb.org/en/latest/api/cluster/icdm.html#:~:text=Intercluster%20distance%20maps%20display%20an,according%20to%20a%20scoring%20metric.
+        For more information: https://www.scikit-yb.org/en/
+        latest/api/cluster/icdm.html#:~:
+        text=Intercluster%20distance%20maps%20display%20an,
+        according%20to%20a%20scoring%20metric.
         The idea is to observe how close they are to each other (intercluster
         distance), and how big the boobles are (intracluster distance).
         It does not matter if the boobles intersect each other, it does not
