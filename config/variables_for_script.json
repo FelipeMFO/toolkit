@@ -1,0 +1,14 @@
+{
+    "PATH_AUXILIAR_FILES": "figures/",
+    "PATH_DATA_ENRICHED": "data/enriched/",
+    "PATH_DATA_RAW": "data/raw/",
+    "PATH_DATA_STRUCTURED": "data/structured/",
+    "PATH_FIGURES": "figures/",
+    "PATH_IMAGES": "images/",
+    "PATH_MODELS": "models/",
+    "HYPERPARAMETERS": {
+        "learning_rate": 1e-6,
+        "name": "model",
+        "num_epochs": 20
+    }
+}

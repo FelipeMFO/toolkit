@@ -1,3 +1,15 @@
+# Environments
+.env
+.venv
+.*
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.env_variables
+.toolkit
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -105,17 +117,6 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
-# Environments
-.env
-.venv
-.*
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-.env_variables
-
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -136,7 +137,6 @@ dmypy.json
 
 # structure stuff
 data/
-auxiliar_temp_folders/
 docs/
 documentation/
 output/
@@ -144,7 +144,6 @@ models/
 secrets.json
 passwords.json
 *.csv
-*.png
 *.zip
 drafts/
 .vscode/
