@@ -8,6 +8,7 @@ The objective of this repository is to be my tool case for data projects.
 - Two branches of work:
     - _main_ -> basic project to be cloned and used.
     - _legacy_ -> project with all interesting functions I've gathered during my life.
+- For further clues, Coda coding page: https://coda.io/d/Coding_d39U-xSSVWG/Python_suKBo#_lur8i
 
 ## Some patterns
 - Modules -> PascalCase.
@@ -47,18 +48,21 @@ The objective of this repository is to be my tool case for data projects.
     - __exploration__: Exploratory data analysis and notebooks to test data generation.
     - __modeling__: Model development using data created and information raised in exploration analysis.
     - __evaluation__: Applying evaluations based on metrics or plots.
-- __src__: Source code
-    - __feature_engineering__
-    - __metrics__
-    - __modeling__
-        - __nn__
-    - __processing__
+- __src__: Source code containing modules and their helpers (if necessary) divided by folder.
+    - __feature_engineering__: Methods that creates features and combine different process to generate strucuted data.
+    - __metrics__: Methods to evaluate models and assess data' hypothesis.
+    - __modeling__: Methods used to develop models. Callbacks and seeds.
+        - __nn__: Neural Networks structures.
+    - __processing__: Methods to process data, filter raw data and recombine. The difference to feature engineering lies on the ideas added, if it's based on only filtering with thresholds, masks, etc... it's processing, if it combines different datasets, gets means, medians, etc... it's feature engineering.
     - __queries__: Normally SQL code.
+    - __visualization__: Folder containing plots and visualization modules.
     - __DataDumper.py__
     - __DataLoader.py__
-    - __MongoLoader.py__
+    - __MongoLoader.py__: Mongo loader module.
     - __utils.py__: General helper.
-
+- __bs-script-gen-folders.sh__: Shell script to generate structure of the project.
+- __Dockerfile__
+- __python-scripts.py__: General python scripts.
 
 
 ---
