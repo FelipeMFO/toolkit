@@ -1,11 +1,69 @@
 # FM's Toolkit 
 
-The objective of this repository is to be my tool case/arsenal for data projects
+The objective of this repository is to be my tool case for data projects.
 
-- TODO: Colocar aqui os comandos de inicialização de git e de envinronment
-- TODO: Colocar informações do lint (flake8) https://code.visualstudio.com/docs/python/linting
+- Containerization or virtual environments available.
+- Linter used: flake8 https://code.visualstudio.com/docs/python/linting
+- Docstring type: Google style guide https://google.github.io/styleguide/pyguide.html#doc-function-args
+- Two branches of work:
+    - _main_ -> basic project to be cloned and used.
+    - _legacy_ -> project with all interesting functions I've gathered during my life.
 
-## Project name
+## Some patterns
+- Modules -> PascalCase.
+- Sources, notebooks, folders and data -> snake_case.
+- Bashs, configurations, related -> kebab-case.
+- Variables:
+    - Singular objects -> 4 letters.
+    - Plural objects -> 4 letters + 's'.
+    - Methods and functions -> 3 or 4 letters (get, gen, set - load, dump, save).
+- JSON:
+    - Alphabetically.
+    - Nested dicts below.
+    - If a word gets too repeated in more objects, put this word as first and declare it.
+- Jupyter notebooks:
+    - Sections and subsections markdowns as nouns, not verbs.
+
+## Structure
+
+- __.project-name__: Folder of virtual environment of the project.
+- __.vscode__: Configurations of the VSCode.
+- __auxiliar_files__: Third part codes that might help the project.
+- __config__: Folder containing:
+    - __Variables.py__: Module responsible for loading the variables on the JSON in real time as objects of a declared object. Refreshing in real time.
+    - __variables-for-script.json__: Variables of the projects declared as a JSON file considering the relative path from the root of the project, where scripts are situated.
+    - __variables.json__: Variables of the projects declared as a JSON file considering the relative path from the `src` and `notebooks` folders.
+- __data__: 
+    - __raw__
+    - __structured__: Processed data that will still be used inside the project.
+    - __enriched__: Output data that will not be used inside the project.
+- __documents__
+- __drafts__: Code that was developed during the project and might be deprecated but still there as a test, backup or draft.
+- __figures__: Figures created from notebooks or scripts.
+- __h2o__: Specific folder for the AutoML framework used by me.
+- __images__: Images that might help the project or be used inside the notebooks' markdowns.
+- __models__
+- __notebooks__
+    - __exploration__: Exploratory data analysis and notebooks to test data generation.
+    - __modeling__: Model development using data created and information raised in exploration analysis.
+    - __evaluation__: Applying evaluations based on metrics or plots.
+- __src__: Source code
+    - __feature_engineering__
+    - __metrics__
+    - __modeling__
+        - __nn__
+    - __processing__
+    - __queries__: Normally SQL code.
+    - __DataDumper.py__
+    - __DataLoader.py__
+    - __MongoLoader.py__
+    - __utils.py__: General helper.
+
+
+
+---
+
+# README template (Project name)
 
 Briefly description about the project motivation and business or technical problem we are trying to solve with this.
 
@@ -19,16 +77,25 @@ There are references that someone that continues this work in the future must ta
 
 Follow the guidelines described at the Repository's Wiki to setup local environment, then run the following commands.
 
+### Setting virtual env
+
+```
+$ python3 -m env .name-of-the-project
+
+# Linux
+$ source .name-of-the-project/bin/activate
+
+# Windows
+$ .\.name-of-the-project\Scripts\activate
+```
+
 ### Build Image
 
 ```bash
 $ sudo docker build --tag=template-project:1.0 .
 ```
-### Instructions on setting module director path 
 
-colocar aqui as instruções do Coda
-
-### Run the container
+#### Run the container
 
 Set the ENV variables GLOBAL_VARIABLE_NAME in the machine and then run the following commands:
 
@@ -44,6 +111,7 @@ $ sudo docker exec -it template-project bash
 $ jupyter lab --ip 0.0.0.0 --port 8000 --allow-root
 ```
 
-**Do other people running this analysis need to install any custom package on their computer or create additional files?**
+**Further stuff instalation**
 
-No
+- googledrive.com
+- dropbox.com
