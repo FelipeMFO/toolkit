@@ -1,5 +1,5 @@
 {
-    "PATH_AUXILIAR_FILES": "../../figures/",
+    "PATH_AUXILIAR_FILES": "../../auxiliar_files/",
     "PATH_DATA_ENRICHED": "../../data/enriched/",
     "PATH_DATA_RAW": "../../data/raw/",
     "PATH_DATA_STRUCTURED": "../../data/structured/",
