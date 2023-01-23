@@ -73,6 +73,33 @@ Briefly description about the project motivation and business or technical probl
 
 ## Project's objective
 
+## Questions
+### General questions
+–	General questions we aim to answer.
+### Data Wrangling questions
+–	Questions inside the scope of gathering and organizing raw data.
+### EDA's questions
+–	Questions inside the scope of exploratory data analysis.
+### Models' questions
+–	Questions inside the scope of models ‘architectures and techniques to be used.
+## Contributors
+People who contibuted for the repository.
+## Data links:
+-   Googledrive.com
+
+## Conclusions
+
+### General Conclusions
+–	General conclusions we achieved from this project.
+### Data Wrangling Conclusions
+–	General conclusions we achieved from data manipulating and wrangling from this project.
+### EDA's Conclusions
+–	Data, statistical, computational insights discovered during data exploration.
+### Models' Conclusions
+–	Problems faced, insights and remarks discovered from modeling architectures and arlogrithms.
+
+
+
 ## Maintainability information
 There are future works? Wich ones are ideas, and which ones are stakeholders' demands?
 There are references that someone that continues this work in the future must take into consideration?
